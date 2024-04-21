@@ -55,14 +55,30 @@ export default function Form() { // Form component
     }
   }, [formData.fullName, touchedFields.fullName]);
 
-  const handleInputChange = (event) => { // this is for input change handler for full name and size inputs
+  const handleInputChange = (event) => {
     const { name, value } = event.target;
+    const trimmedValue = value.trim();  // Ensure whitespace is not considered in validation
+
+    // Update form data
     setFormData(prevData => ({
       ...prevData,
-      [name]: value.trim()  // Trim whitespace from input
+      [name]: trimmedValue
     }));
+
+    // Mark the field as touched
     setTouchedFields(prev => ({ ...prev, [name]: true }));
-  };
+
+    // Validate the field using Yup schema immediately but handle errors appropriately
+    formSchema.validateAt(name, {[name]: trimmedValue}).then(() => {
+        // If valid, remove any existing error for this field
+        setErrors(prevErrors => ({ ...prevErrors, [name]: '' })); // Clear specific field error
+    }).catch(err => {
+        // If not valid, set the error message for this field
+        setErrors(prevErrors => ({ ...prevErrors, [name]: err.message }));
+    });
+};
+
+
   
   
   
@@ -158,7 +174,8 @@ export default function Form() { // Form component
         ))}
       </div>
 
-      <input type="submit" disabled={!formData.fullName || !formData.size || Object.keys(errors).length !== 0} />
+      <input type="submit" disabled={!formData.fullName || !formData.size || Object.values(errors).some(error => error !== '')} />
+
     </form>
   );
 }
