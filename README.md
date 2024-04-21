@@ -38,7 +38,7 @@ You have been given a take-home coding assessment as part of the hiring process 
 
 ### 🥷 Tasks
 
-#### 👉 TASK 1 - Study the mock site
+#### 👉 TASK 1 - Study the mock site // DONE
 
 Your fully-functional **design mock** is <https://bloominstituteoftechnology.github.io/W_S7_Challenge/>
 
@@ -46,7 +46,7 @@ Study it using Chrome Dev Tools, paying special attention to the Elements tab.
 
 Your finished product will have to match the functionality of the design exactly.
 
-#### 👉 TASK 2 - Study the pizza order endpoint
+#### 👉 TASK 2 - Study the pizza order endpoint // DONE
 
 Study with Postman the following endpoint: `[POST] http://localhost:9009/api/order`
 
@@ -88,21 +88,21 @@ Here are some **invalid** payloads (test in Postman!):
 
 **Inside the [index.js](frontend/index.js) module:**
 
-- Wrap the `<App />` element using `BrowserRouter` from React Router.
+- Wrap the `<App />` element using `BrowserRouter` from React Router. // DONE //
 
 **Inside the [App.js](./frontend/components/App.js) module:**
 
-- Inside the `nav`, render two `NavLinks`:
+- Inside the `nav`, render two `NavLinks`: /// DONE //
     1. One with text content **Home** that navigates to "/".
     2. One with text content **Order** that navigates to "/order".
 
-- Below the `nav`, render a `Routes` element containing two `Route` elements:
+- Below the `nav`, render a `Routes` element containing two `Route` elements: //DONE//
     1. When the path is "/" it renders `<Home />`.
     2. When the path is "/order" it renders `<Form />`.
 
 **Inside the [Home.js](./frontend/components/Home.js) module:**
 
-- Create a click handler so that clicking on the image navigates the user to "/order".
+- Create a click handler so that clicking on the image navigates the user to "/order". // DONE //
 
 #### 👉 TASK 4 - Create a form to submit pizza orders
 
